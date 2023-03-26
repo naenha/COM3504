@@ -1,11 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<head>
+  <title>Bird Watching</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script type="application/javascript" src="/javascripts/index.js"></script>
+</head>
+<body>
+<header>
+  <h1>Bird Watching List</h1>
+  <nav><a href="/upload" >upload</a></nav>
+</header>
+<main>
+  <table>
+    <thead>
+    <tr>
+      <th>Date/Time</th>
+      <th>Identification</th>
+      <th>USER</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% for(var i=0; i<birdList.length; i++) { %>
+      <tr>
+        <td><a href="/"><%= birdList[i].time %></a> </td>
+        <td><%= birdList[i].type %></td>
+        <td><%= birdList[i].publisher %></td>
+      </tr>
+    <% } %>
+    </tbody>
+  </table>
+</main>
+</body>
 </html>
