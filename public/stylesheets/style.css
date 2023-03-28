@@ -26,7 +26,9 @@ nav a {
   text-decoration: none;
   margin-left: 10px;
 }
-
+nav a:hover{
+  background-color: #ddd;
+}
 table {
   width: 100%;
   margin: auto;
@@ -35,7 +37,7 @@ table {
 }
 
 thead {
-  background-color: #007bff;
+  background-color: #6EC6F4;
   color: #fff;
 }
 

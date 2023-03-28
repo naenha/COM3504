@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bird Watching</title>
+    <link rel='stylesheet' href='/stylesheets/upload.css' />
+    <script type="application/javascript" src="/javascripts/index.js"></script>
+</head>
+<body>
+<header>
+    <h1>Bird Watching List</h1>
+    <nav><a href="/index" >home</a></nav>
+</header>
+<div class="container">
+    <h1>Please fill in the details:</h1>
+    <form action="/upload" method="post">
+        <div class="block">
+            <label for="bird-photo">The photo of bird：</label>
+            <input type="file" id="bird-photo" name="birdPhoto" required>
+        </div>
+        <div class="block">
+            <label for="bird-address">Address：</label>
+            <input type="text" id="bird-address" name="birdAddress" required>
+        </div>
+        <div class="block">
+            <label for="bird-description">Description：</label>
+            <textarea id="bird-description" name="birdDescription" required></textarea>
+        </div>
+        <button type="submit">upload</button>
+    </form>
+</div>
