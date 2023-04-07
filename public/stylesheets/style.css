@@ -12,9 +12,20 @@ header {
   justify-content: space-between;
 }
 
+
+
 h1 {
   margin: 0;
   font-size: 1.5em;
+}
+
+h2 {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 nav {
   display: flex;

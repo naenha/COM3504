@@ -6,6 +6,11 @@ var router = express.Router();
 router.get('/upload', function (req, res, next) {
   res.render('upload');
 })
+
+router.get('/details', function (req, res, next) {
+  res.render('details');
+})
+
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Bird Watching List' });
   const birdList = [
