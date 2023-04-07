@@ -3,7 +3,7 @@
 <head>
   <title>Bird Watching</title>
   <link rel='stylesheet' href='/stylesheets/style.css' />
-  <script type="application/javascript" src="/javascripts/index.js"></script>
+
 </head>
 <body>
 <header>
@@ -14,14 +14,16 @@
   <table>
     <thead>
     <tr>
+      <th>ID</th>
       <th>Date/Time</th>
       <th>Identification</th>
       <th>USER</th>
     </tr>
     </thead>
     <tbody>
-    <% for(var i=0; i<birdList.length; i++) { %>
+    <% for(var i=0,j=1; i<birdList.length; i++,j++) { %>
       <tr>
+        <td><%=j%></td>
         <td><a href="/"><%= birdList[i].time %></a> </td>
         <td><%= birdList[i].type %></td>
         <td><%= birdList[i].publisher %></td>
