@@ -1,3 +1,5 @@
+import res from "express/lib/response";
+
 let name = null;
 let roomNo = null;
 let socket = io();
@@ -50,5 +52,6 @@ function writeOnHistory(text) {
     history.appendChild(paragraph);
     document.getElementById('chat_input').value = '';
 }
+
 
 

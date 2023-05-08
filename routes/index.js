@@ -1,4 +1,5 @@
 var express = require('express');
+const res = require("express/lib/response");
 var router = express.Router();
 
 /* GET home page. */
@@ -12,7 +13,7 @@ router.get('/details', function (req, res, next) {
 })
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Bird Watching List' });
+  //res.render('index', { title: 'Bird Watching List' });
   const birdList = [
     { time: '2022-03-01 09:00', type: 'Arctic tern', publisher: 'user1' },
     { time: '2022-03-01 10:30', type: 'Avocet', publisher: 'user2' },
@@ -28,6 +29,9 @@ router.get('/', function(req, res, next) {
     return timeB - timeA;
   });
   res.render('index', { birdList: birdList });
+  if (!res.headersSent) {
+    res.setHeader('Content-Type', 'application/json');
+  }
 });
 
 module.exports = router;
