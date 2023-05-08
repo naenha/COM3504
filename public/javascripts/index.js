@@ -1,5 +1,5 @@
 let name = null;
-
+let roomNo = null;
 let socket = io();
 
 
@@ -10,7 +10,6 @@ let socket = io();
  */
 function init() {
 
-    // called when a message is received
     socket.on('chat', function (userId, chatText) {
         let who = userId
         if (userId === name) who = 'Me';
@@ -19,6 +18,15 @@ function init() {
 
 }
 
+/**
+ * called to generate a random room number
+ * This is a simplification. A real world implementation would ask the server to generate a unique room number
+ * so to make sure that the room number is not accidentally repeated across uses
+ */
+function generateRoom() {
+    roomNo = Math.round(Math.random() * 10000);
+    document.getElementById('roomNo').value = 'R' + roomNo;
+}
 
 /**
  * called when the Send button is pressed. It gets the text to send from the interface
@@ -26,8 +34,8 @@ function init() {
  */
 function sendChatText() {
     let chatText = document.getElementById('chat_input').value;
+    name = document.getElementById('userID').value;
     socket.emit('chat', name, chatText);
-
 }
 
 
@@ -42,6 +50,5 @@ function writeOnHistory(text) {
     history.appendChild(paragraph);
     document.getElementById('chat_input').value = '';
 }
-
 
 

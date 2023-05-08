@@ -1,116 +1,114 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
 }
 header {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
+
+
 
 
 .chat-box {
+    display: flex;
+    flex-direction: column;
 
-  display: flex;
-  bottom: 20px;
-  left: 20px;
-  width: 400px;
-  height: 400px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    bottom: 20px;
+    left: 20px;
+    width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 
 .chatlog-list {
-  padding: 0;
-  margin: 0;
-  list-style: none;
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 .chat-input {
 
-  display: flex;
+    display: flex;
 
-  align-items: center;
-  padding: 10px;
-  margin-top: auto;
+    align-items: center;
+    padding: 10px;
+    margin-top: auto;
 }
 .chatlog{
-  width: 20%;
+    width: 20%;
 }
 
-p input, p button{
-  display: inline-block;
-}
 .chat-input-box {
-  flex-grow: 1;
-  margin-right: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 5px 10px;
+    flex-grow: 1;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px 10px;
 }
 
 .chat-send-btn {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
-  cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
 }
 h1 {
-  margin: 0;
-  font-size: 1.5em;
+    margin: 0;
+    font-size: 1.5em;
 }
 
 h2 {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 nav {
-  display: flex;
-  justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;
 }
 
 nav a {
-  color: #fff;
-  text-decoration: none;
-  margin-left: 10px;
+    color: #fff;
+    text-decoration: none;
+    margin-left: 10px;
 }
 nav a:hover{
-  background-color: #ddd;
+    background-color: #ddd;
 }
 table {
-  width: 100%;
-  margin: auto;
-  border-collapse: collapse;
-  border: 1px solid #ccc;
+    width: 100%;
+    margin: auto;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
 }
 
 thead {
-  background-color: #6EC6F4;
-  color: #fff;
+    background-color: #6EC6F4;
+    color: #fff;
 }
 
 th, td {
-  padding: 8px;
-  text-align: center;
-  border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ccc;
 }
 
 tr:nth-child(even) {
-  background-color: #f2f2f2;
+    background-color: #f2f2f2;
 }
 
 tr:hover {
-  background-color: #ddd;
+    background-color: #ddd;
 }
