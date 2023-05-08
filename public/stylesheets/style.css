@@ -18,17 +18,14 @@ header {
   display: flex;
   bottom: 20px;
   left: 20px;
-  width: 300px;
+  width: 400px;
   height: 400px;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
-.chatlog {
-  height: 80%;
-  overflow-y: scroll;
-}
+
 
 .chatlog-list {
   padding: 0;
@@ -42,6 +39,13 @@ header {
   align-items: center;
   padding: 10px;
   margin-top: auto;
+}
+.chatlog{
+  width: 20%;
+}
+
+p input, p button{
+  display: inline-block;
 }
 .chat-input-box {
   flex-grow: 1;
