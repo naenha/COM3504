@@ -11,59 +11,6 @@ header {
     align-items: center;
     justify-content: space-between;
 }
-
-.who_you_are {
-    font-family: fantasy;
-    font-weight: bold;
-}
-
-
-.chat-box {
-    display: flex;
-    flex-direction: column;
-
-    bottom: 20px;
-    left: 20px;
-    width: 400px;
-    border: 1px solid #ccc;
-    border-radius: 20px; /*5px*/
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-
-.chatlog-list {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-.chat-input {
-
-    display: flex;
-
-    align-items: center;
-    padding: 10px;
-    margin-top: auto;
-}
-.chatlog{
-    width: 20%;
-}
-
-.chat-input-box {
-    flex-grow: 1;
-    margin-right: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 5px 10px;
-}
-
-.chat-send-btn {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-}
 h1 {
     margin: 0;
     font-size: 1.5em;
@@ -114,4 +61,63 @@ tr:nth-child(even) {
 
 tr:hover {
     background-color: #ddd;
+}
+
+.title {
+    font-weight: bold;
+    margin:10px;
+}
+
+.blank {
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#chat-box {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+    /*
+    flex-direction: column;
+    position: relative;
+
+    top: 10px;
+    bottom: 100px;
+    left: 500px;
+
+     */
+    width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#chat-input {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: auto;
+}
+
+#chatlog{
+    width: 20%;
+}
+
+#chat-input-box {
+    flex-grow: 1;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+#chat-send-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
