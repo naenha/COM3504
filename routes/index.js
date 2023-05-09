@@ -21,10 +21,6 @@ var upload = multer({ storage: storage });
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'My Form' });
-});
-
 
 router.get('/index', function(req, res, next) {
   res.render('index', { title: 'My Form' });
@@ -39,6 +35,23 @@ router.post('/add', upload.single('myImg'), function(req, res) {
   bird.create(req,res);
 });
 
+router.get('/', function(req, res, next) {
+  const birdList = [
+    { time: '2022-03-01 09:00', type: 'Arctic tern', publisher: 'user1' },
+    { time: '2022-03-01 10:30', type: 'Avocet', publisher: 'user2' },
+    { time: '2022-03-01 11:45', type: 'owl', publisher: 'user3' },
+    { time: '2022-03-01 13:15', type: 'bearded tit', publisher: 'user4' },
+    { time: '2022-03-01 16:45', type: 'owl', publisher: 'user5' },
+  ];
+
+// Sort by newest added
+  birdList.sort(function(a, b) {
+    const timeA = new Date(a.time);
+    const timeB = new Date(b.time);
+    return timeB - timeA;
+  });
+  res.render('index', { birdList: birdList, title: 'Bird Watching List'  });
+});
 
 
 
