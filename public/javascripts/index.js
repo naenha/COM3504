@@ -1,5 +1,3 @@
-import res from "express/lib/response";
-
 let name = null;
 let roomNo = null;
 let socket = io();
@@ -12,9 +10,19 @@ let socket = io();
  */
 function init() {
 
+    // // called when someone joins the room. If it is someone else it notifies the joining of the room
+    // socket.on('joined', function (room, userId) {
+    //     if (userId === name) {
+    //         // it enters the chat
+    //         hideLoginInterface(room, userId);
+    //     } else {
+    //         // notifies that someone has joined the room
+    //         writeOnHistory('<b>'+userId+'</b>' + ' joined room ' + room);
+    //     }
+    // });
+    // called when a message is received
     socket.on('chat', function (userId, chatText) {
         let who = userId
-        if (userId === name) who = 'Me';
         writeOnHistory('<b>' + who + ':</b> ' + chatText);
     });
 
@@ -36,7 +44,7 @@ function generateRoom() {
  */
 function sendChatText() {
     let chatText = document.getElementById('chat_input').value;
-    name = document.getElementById('userID').value;
+    let name = document.getElementById('userID').value;
     socket.emit('chat', name, chatText);
 }
 
@@ -52,6 +60,10 @@ function writeOnHistory(text) {
     history.appendChild(paragraph);
     document.getElementById('chat_input').value = '';
 }
+
+
+
+
 
 
 

@@ -1,5 +1,5 @@
 var express = require('express');
-const res = require("express/lib/response");
+var res = require("express/lib/response");
 var router = express.Router();
 
 /* GET home page. */
@@ -29,10 +29,11 @@ router.get('/', function(req, res, next) {
     return timeB - timeA;
   });
   res.render('index', { birdList: birdList });
-  if (!res.headersSent) {
-    res.setHeader('Content-Type', 'application/json');
-  }
 });
 
 module.exports = router;
+
+
+
+
 
