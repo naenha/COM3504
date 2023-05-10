@@ -17,7 +17,8 @@ exports.create = function (req, res) {
 
     bird.save(function (err, results) {
         if (err)
-            res.status(500).send('Invalid data!');
+            //res.status(500).send('Invalid data!');
+            res.render('error', { error: err });
         res.setHeader('Content-Type', 'application/json');
         res.send(JSON.stringify(bird));
     });
