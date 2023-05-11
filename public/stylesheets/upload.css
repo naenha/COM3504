@@ -67,3 +67,13 @@ button[type="submit"] {
     cursor: pointer;
 
 }
+#search-panel {
+    top: 10px;
+    left: 25%;
+    z-index: 5;
+    background-color: #FFFFFF;
+    padding: 5px;
+    border: 1px solid black;
+    text-align: center;
+    padding: left: 10px
+}
