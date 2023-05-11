@@ -1,4 +1,5 @@
 <component name="ProjectRunConfigurationManager">
+<<<<<<< HEAD
   <configuration default="false" name="bin\www" type="NodeJSConfigurationType" path-to-js-file="bin/www" working-dir="$PROJECT_DIR$">
     <envs>
       <env name="DEBUG" value="com3504-assignment:*" />
@@ -7,5 +8,15 @@
       <browser url="http://localhost:3000/" />
     </EXTENSION>
     <method v="2" />
+=======
+  <configuration default="false" name="bin/www" type="NodeJSConfigurationType" factoryName="Node.js" path-to-js-file="bin/www" working-dir="$PROJECT_DIR$">
+    <envs>
+      <env name="DEBUG" value="Week 5 Mongo:*" />
+    </envs>
+    <EXTENSION ID="com.jetbrains.nodejs.run.NodeJSStartBrowserRunConfigurationExtension">
+      <browser url="http://localhost:3000/" />
+    </EXTENSION>
+    <method />
+>>>>>>> db
   </configuration>
 </component>

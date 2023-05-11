@@ -5,9 +5,9 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('com3504-assignment:server');
+var debug = require('debug')('week-5-mongo:server');
 var http = require('http');
-
+var database= require('../databases/birds')
 /**
  * Get port from environment and store in Express.
  */

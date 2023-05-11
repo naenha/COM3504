@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/COM3504_Assignment.iml" filepath="$PROJECT_DIR$/.idea/COM3504_Assignment.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/Week 11 - Image Upload.iml" filepath="$PROJECT_DIR$/Week 11 - Image Upload.iml" />
+>>>>>>> db
     </modules>
   </component>
 </project>
