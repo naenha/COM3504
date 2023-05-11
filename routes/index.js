@@ -35,6 +35,10 @@ router.post('/add', upload.single('myImg'), function(req, res) {
   bird.create(req,res);
 });
 
+router.get('/details', function (req, res, next) {
+  res.render('details');
+})
+
 router.get('/', function(req, res, next) {
   const birdList = [
     { time: '2022-03-01 09:00', type: 'Arctic tern', publisher: 'user1' },
