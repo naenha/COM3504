@@ -7,14 +7,15 @@ var BirdSchema = new Schema(
         createdAt : {type: Date, default : Date.now},
         observedAt : {type: Date},
         userName : {type: String},
-        img: {type: String }
+        img: {type: String },
+        description: {type: String },
         // createdAt : {type: Date, default : Date.now},
         // observedAt : {type: Date},
         // location : {
         //     lat: {type: Number},
         //     lng: {type: Number}
         // },
-        // description: {type: String },
+        
         // identification : {
         //     commonName: {type: String},
         //     scientificName: {type: String},

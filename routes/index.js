@@ -20,14 +20,9 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 
-/* GET home page. */
-
-router.get('/index', function(req, res, next) {
-  res.render('index', { title: 'My Form' });
-});
 
 router.get('/add', function(req, res, next) {
-  res.render('add', { title: 'Add a new Character to the DB' });
+  res.render('add', { title: 'Add a new bird' });
 });
 
 router.post('/add', upload.single('myImg'), function(req, res) {
