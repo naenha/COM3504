@@ -54,7 +54,4 @@ router.get('/', function(req, res, next) {
 });
 
 
-
-//router.post('/index', character.getAge);
-
 module.exports = router;
