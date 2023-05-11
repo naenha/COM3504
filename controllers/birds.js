@@ -10,6 +10,7 @@ exports.create = function (req, res) {
 
     var bird = new Bird({
         userName: userData.userName,
+        birdName: userData.birdName,
         observedAt: userData.observedAt,
         description: userData.description,
         img: req.file.path
