@@ -8,14 +8,14 @@ var BirdSchema = new Schema(
         birdName : {type: String, max: 50},
         observedAt : {type: Date},
         userName : {type: String, max: 50},
-        img: {type: String }
+        img: {type: String },
         // createdAt : {type: Date, default : Date.now},
         // observedAt : {type: Date},
         // location : {
         //     lat: {type: Number},
         //     lng: {type: Number}
         // },
-        // description: {type: String },
+        description: {type: String }
         // identification : {
         //     commonName: {type: String},
         //     scientificName: {type: String},
