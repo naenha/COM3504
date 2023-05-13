@@ -46,9 +46,9 @@
     <% for(var i=0,j=1; i<birdList.length; i++,j++) { %>
       <tr>
         <td><%=j%></td>
-        <td><a href="/details"><%= birdList[i].time %></a> </td>
-        <td><%= birdList[i].type %></td>
-        <td><%= birdList[i].publisher %></td>
+        <td><a href="/details?id=<%= birdList[i]._id %>"><%= birdList[i].createdAt %></a> </td>
+        <td><%= birdList[i].birdName %></td>
+        <td><%= birdList[i].userName %></td>
       </tr>
     <% } %>
     </tbody>

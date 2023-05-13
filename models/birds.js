@@ -5,9 +5,9 @@ var Schema = mongoose.Schema;
 var BirdSchema = new Schema(
     {
         createdAt : {type: Date, default : Date.now},
-        birdName : {type: String},
+        birdName : {type: String, max: 50},
         observedAt : {type: Date},
-        userName : {type: String},
+        userName : {type: String, max: 50},
         img: {type: String }
         // createdAt : {type: Date, default : Date.now},
         // observedAt : {type: Date},
