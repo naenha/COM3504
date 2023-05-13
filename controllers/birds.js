@@ -13,11 +13,7 @@ exports.create = function (req, res) {
         birdName: userData.birdName,
         observedAt: userData.observedAt,
         description: userData.description,
-<<<<<<< HEAD
-        img: req.file.path
-=======
         img: path.relative('../public',req.file.path)
->>>>>>> f561c74291a9fda967c38ba2d5ab21d31cdfc2be
     });
 
     bird.save(function (err, results) {
