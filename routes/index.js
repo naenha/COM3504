@@ -8,7 +8,11 @@ var Bird = require('../models/birds');
 // storage defines the storage options to be used for file upload with multer
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
+<<<<<<< HEAD
     cb(null, 'public/uploads');
+=======
+    cb(null, '../public/uploads/');
+>>>>>>> f561c74291a9fda967c38ba2d5ab21d31cdfc2be
   },
   filename: function (req, file, cb) {
     var original = file.originalname;
@@ -38,6 +42,7 @@ router.post('/add', upload.single('myImg'), function(req, res) {
 
 router.get('/details', function (req, res, next) {
   var id =req.query.id;
+  console.log(bird.img)
   Bird.findById(id, function(err, bird) {
     if (err)
       res.render('error', { error: err });
