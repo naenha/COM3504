@@ -13,7 +13,7 @@ exports.create = function (req, res) {
         birdName: userData.birdName,
         observedAt: userData.observedAt,
         description: userData.description,
-        img: path.relative('C:/Users/86180/WebstormProjects/COM3504index/public', req.file.path)
+        img: path.relative('../public',req.file.path)
     });
 
     bird.save(function (err, results) {
