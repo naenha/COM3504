@@ -3,6 +3,7 @@ var router = express.Router();
 var bodyParser= require("body-parser");
 var bird = require('../controllers/birds');
 var multer = require('multer');
+const Bird  = require("../models/birds");
 
 // storage defines the storage options to be used for file upload with multer
 var storage = multer.diskStorage({
@@ -30,23 +31,38 @@ router.post('/add', upload.single('myImg'), function(req, res) {
   bird.create(req,res);
 });
 
-router.get('/', function(req, res, next) {
-  const birdList = [
-    { time: '2022-03-01 09:00', type: 'Arctic tern', publisher: 'user1' },
-    { time: '2022-03-01 10:30', type: 'Avocet', publisher: 'user2' },
-    { time: '2022-03-01 11:45', type: 'owl', publisher: 'user3' },
-    { time: '2022-03-01 13:15', type: 'bearded tit', publisher: 'user4' },
-    { time: '2022-03-01 16:45', type: 'owl', publisher: 'user5' },
-  ];
+router.get('/', async(req, res, next) => {
+  const birdList = await Bird.find({})
+//   const birdList = [
+//     { time: '2022-03-01 09:00', type: 'Arctic tern', publisher: 'user1' },
+//     { time: '2022-03-01 10:30', type: 'Avocet', publisher: 'user2' },
+//     { time: '2022-03-01 11:45', type: 'owl', publisher: 'user3' },
+//     { time: '2022-03-01 13:15', type: 'bearded tit', publisher: 'user4' },
+//     { time: '2022-03-01 16:45', type: 'owl', publisher: 'user5' },
+//   ];
 
-// Sort by newest added
-  birdList.sort(function(a, b) {
-    const timeA = new Date(a.time);
-    const timeB = new Date(b.time);
-    return timeB - timeA;
-  });
-  res.render('index', { birdList: birdList, title: 'Bird Watching List'  });
+// // Sort by newest added
+//   birdList.sort(function(a, b) {
+//     const timeA = new Date(a.time);
+//     const timeB = new Date(b.time);
+//     return timeB - timeA;
+//   });
+  console.log(birdList)
+  // res.render('index', { birdList: birdList, title: 'Bird Watching List'  });
 });
+
+router.get('/details/:id', async(req, res) =>{
+    //res.render('details');
+    const birdId = req.params.id;
+    try {
+      const post = await Bird.findById(birdId);
+      res.json(post);
+    }
+    catch (error){
+      console.log(error);
+    }
+});
+
 
 
 module.exports = router;

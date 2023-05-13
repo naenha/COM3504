@@ -6,7 +6,7 @@ var ChatSchema = new Schema(
     {
         createdAt : {type: Date, default : Date.now},
         userName : {type: String},
-        comment : {type: String},
+        chat : {type: String},
 
         // id of the bird page
         birdId : {type: String}
