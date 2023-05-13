@@ -8,7 +8,8 @@ var Bird = require('../models/birds');
 // storage defines the storage options to be used for file upload with multer
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'public/uploads');]
+    cb(null, 'public/uploads');
+
   },
   filename: function (req, file, cb) {
     var original = file.originalname;
