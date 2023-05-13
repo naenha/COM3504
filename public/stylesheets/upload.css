@@ -67,3 +67,20 @@ button[type="submit"] {
     cursor: pointer;
 
 }
+#search-panel {
+    top: 10px;
+    left: 25%;
+    z-index: 5;
+    background-color: #FFFFFF;
+    padding: 5px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+#google-map {
+    position: static;
+    width: 100%;
+    height: 200px;
+    margin: 10px;
+    padding: 10px;
+}

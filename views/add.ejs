@@ -53,11 +53,81 @@
                     <label for="observation">Observed at: </label>
                     <input type='date' name="observedAt"/><br>
                 </div>
-        
-                <!-- <div class="block">
-                    <label for="bird-address">Address：</label>
-                    <input type="text" id="bird-address" name="birdAddress" required>
-                </div> -->
+            <div id="search-panel">
+                <label for="address">Address(e.g. postcode): </label>
+                <input id="address" type="text" value="" />
+                <button id="submit" type="button" value="Geocode">Search</button>
+            </div>
+            <div id="google-map">
+            </div>
+
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+            <!-- Google Map API -->
+            <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJ9gcEoETHLesDRF_qNPNTyLM9wbkxLBU&callback=initMap">
+            </script>
+            <script>
+
+                function initMap(elementId) {
+                    var map = new google.maps.Map(document.getElementById('google-map'), {
+                        zoom: 12.5,
+                        center: {
+                            lat: 53.3798303,
+                            lng: -1.4681218
+                        }
+                    });
+
+                    /**
+                     * Google Geocoding.
+                     */
+                    var geocoder = new google.maps.Geocoder();
+
+                    // submit button
+                    document.getElementById('submit').addEventListener('click', function() {
+                        console.log('submit button event');
+                        geocodeAddress(geocoder, map);
+                    });
+
+                    /**
+                     * geocodeAddress
+                     *
+                     * marker moved to the address where user typed in
+                     */
+                    function geocodeAddress(geocoder, resultMap) {
+                        console.log('geocodeAddress 함수 실행');
+
+                        // the address
+                        var address = document.getElementById('address').value;
+
+                        geocoder.geocode({'address': address}, function(result, status) {
+                            console.log(result);
+                            console.log(status);
+
+                            if (status === 'OK') {
+                                // set up coordinates
+                                resultMap.setCenter(result[0].geometry.location);
+                                // set up zoom
+                                resultMap.setZoom(18);
+                                // map marker
+                                var marker = new google.maps.Marker({
+                                    map: resultMap,
+                                    position: result[0].geometry.location
+                                });
+
+                                var latitude = marker.position.lat();
+                                var longitude = marker.position.lng();
+
+                                // latitude
+                                console.log('(latitude) : ' + latitude);
+                                // longitude
+                                console.log('(longitude) : ' + longitude);
+                            } else {
+                                alert('Wrong type of address: ' + status);
+                            }
+                        });
+                    }
+                }
+            </script>
                 
                 <div class="block">
                     <label for="bird-description">Description：</label>
