@@ -159,10 +159,6 @@
       </item>
     </group>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_5">
-    <output url="file://$PROJECT_DIR$/out" />
-  </component>
-  <component name="ShelveChangesManager" show_recycled="false" />
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
     <option name="SRCSAFEINI_PATH" value="" />
