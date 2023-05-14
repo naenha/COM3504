@@ -53,11 +53,23 @@
                     <label for="observation">Observed at: </label>
                     <input type='date' name="observedAt"/><br>
                 </div>
+
             <div id="search-panel">
                 <label for="address">Address(e.g. postcode): </label>
                 <input id="address" type="text" value="" />
                 <button id="submit" type="button" value="Geocode">Search</button>
             </div>
+
+            <div class="block">
+                <label for="lat">lat: </label>
+                <input id="latDisplay" />
+            </div>
+
+            <div class="block">
+                <label for="lng">lng: </label>
+                <input id="lngDisplay" />
+            </div>
+
             <div id="google-map">
             </div>
 
@@ -116,6 +128,15 @@
 
                                 var latitude = marker.position.lat();
                                 var longitude = marker.position.lng();
+
+                                // set up latitude display
+                                var latDisplay = document.getElementById('latDisplay');
+                                latDisplay.value = latitude.toFixed(6);
+
+
+                                // set up longitude display
+                                var lngDisplay = document.getElementById('lngDisplay');
+                                lngDisplay.value = longitude.toFixed(6);
 
                                 // latitude
                                 console.log('(latitude) : ' + latitude);

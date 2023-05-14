@@ -9,6 +9,9 @@ var BirdSchema = new Schema(
         observedAt : {type: Date},
         userName : {type: String, max: 50},
         img: {type: String },
+        address: {type: String},
+        latDisplay: {type: Number},
+        lngDisplay: {type: Number},
         // createdAt : {type: Date, default : Date.now},
         // observedAt : {type: Date},
         // location : {

@@ -13,7 +13,10 @@ exports.create = function (req, res) {
         birdName: userData.birdName,
         observedAt: userData.observedAt,
         description: userData.description,
-        img: req.file.path
+        address: userData.address,
+        img: req.file.path,
+        latDisplay: userData.latDisplay,
+        lngDisplay: userData.latDisplay,
     });
 
     bird.save(function (err, results) {
