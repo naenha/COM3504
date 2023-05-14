@@ -16,7 +16,7 @@ exports.create = function (req, res) {
         address: userData.address,
         img: req.file.path,
         latDisplay: userData.latDisplay,
-        lngDisplay: userData.latDisplay,
+        lngDisplay: userData.lngDisplay,
     });
 
     bird.save(function (err, results) {
