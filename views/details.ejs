@@ -8,43 +8,47 @@
     <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
     <link rel='stylesheet' href='/stylesheets/details.css'/>
     <script src="/javascripts/index.js"></script>
+
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+
 </head>
 <body onload="init()">
 
+
 <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">Bird Sighting Club</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/upload">Upload</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-<h1>
-    bird sighting at....timestamp
-</h1><br>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+          <div class="container-fluid">
+              <a class="navbar-brand" href="/">Bird Sighting Club</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav">
+                      <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="/">Home</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="/add">Upload</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+  </header>
+  <h1>
+      bird sighting at....timestamp
+  </h1><br>
 
 
-<div class="row">
-    <div class="col">
-        <img src="https://d3rf6j5nx5r04a.cloudfront.net/ipFmep3UBFQ8gj_b1LawDzpKdGM=/1120x0/product/f/4/213d9156664749759e185d102051893d_opt.jpg" class="rounded float-start" alt="ex pic" width="400" height="600">
-        <!--          <img src="img/Shapiro.jpeg" alt="ex pic" width="400" height="450">-->
-    </div>
+  <div class="row">
+      <div class="col">
+          <img class="rounded float-start" alt="ex pic" width="400" height="600" src="<%= bird.img.replace('public/', '') %>">
+<!--          <img src="img/Shapiro.jpeg" alt="ex pic" width="400" height="450">-->
+      </div>
 
-    <div class="col-5">
-        Location<br>
-        Address goes here<br>
+      <div class="col-5">
+          Location<br>
+          Address goes here<br>
 
 
         <div id="map" style="width: 100%; height: 200px;"></div>
@@ -74,11 +78,10 @@
         <!--                  src="https://www.google.com/maps/embed/v1/place?q=S37RD&key=API_GOES_HERE">-->
         <!--          </iframe>-->
         Description<br>
-        <textarea style="width: 100%; height: 200px;">
-          </textarea>
+          <%= bird.description %><br>
 
     </div>
-</div>
+  </div>
 <div id="chat-box" style="display: block; background-color: #d8dada; width: 50%" >
     <div>
         <div class="title" style="display: inline">Welcome chat!</div>
@@ -93,10 +96,10 @@
                 <button id="chat-send-btn" onclick="sendChatText()">Send</button>
             </p>
         </form>
-    </div>
+    </div></div>
 </div>
 
 
-
+</div>
 </body>
 </html>
