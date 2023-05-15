@@ -17,11 +17,21 @@ exports.create = function (req, res) {
     });
 
     bird.save(function (err, results) {
-        if (err)
-            //res.status(500).send('Invalid data!');
+        if (err) {
             res.render('error', { error: err });
-        res.setHeader('Content-Type', 'application/json');
-        res.send(JSON.stringify(bird));
+        } else {
+            res.setHeader('Content-Type', 'application/json');
+            res.redirect('/');
+        }
+    });
+
+};
+
+exports.list = function(callback) {
+    Bird.find({}).sort('-createdAt').exec(function(err, birds) {
+        if (err)
+            callback(err, null);
+        callback(null, birds);
     });
 };
 
