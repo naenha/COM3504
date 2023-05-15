@@ -8,7 +8,9 @@ var BirdSchema = new Schema(
         birdName : {type: String},
         observedAt : {type: Date},
         userName : {type: String},
-        img: {type: String }
+        img: {type: String },
+        latDisplay: {type: Number},
+        lngDisplay: {type: Number},
         // createdAt : {type: Date, default : Date.now},
         // observedAt : {type: Date},
         // location : {
