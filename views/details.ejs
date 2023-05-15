@@ -80,8 +80,14 @@
       <div class="chatlog">
           <ul class="chatlog-list"></ul>
       </div>
+
+      <script>
+        var chat = require('../controllers/chats');
+      </script>
+
+
       <div class="chat-input">
-          <input type="text" class="chat-input-box" placeholder="Type your message...">
+          <input type="text" class="chat-input-box" name = "chat" placeholder="Type your message...">
           <button class="chat-send-btn">Send</button>
       </div>
   </div>

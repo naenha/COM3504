@@ -35,7 +35,7 @@ router.post('/add', upload.single('myImg'), function(req, res) {
 
 router.get('/details', function (req, res, next) {
   var id =req.query.id;
-  console.log(bird.img)
+
   Bird.findById(id, function(err, bird) {
     if (err)
       res.render('error', { error: err });

@@ -13,7 +13,7 @@ function sendAjaxQuery(url, data) {
             var ret = dataR;
             // in order to have the object printed by alert
             // we need to JSON stringify the object
-            document.getElementById('results').innerHTML= JSON.stringify(ret);
+            // document.getElementById('results').innerHTML= JSON.stringify(ret);
         },
         error: function (xhr, status, error) {
 
