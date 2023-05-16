@@ -33,6 +33,10 @@
       bird sighting at....timestamp
   </h1><br>
 
+ <h1>
+     Bird name:
+     <%= bird.birdName %>
+ </h1>
 
   <div class="row">
       <div class="col">
@@ -80,6 +84,69 @@
 <!--          </iframe>-->
           Description:<br>
           <%= bird.description %><br>
+        <p></p>
+        <input id="birdSearch" value= <%= bird.birdName %> style="display:none">
+        <p><---DBpedia---></p>
+        <p id="pediaName"></p>
+        <p id="pediaContent"></p>
+        <p id="pediaLink"></p>
+
+        <script>
+
+            var bird2 = document.getElementById("birdSearch").value;
+            console.log(bird2);
+            // SPARQL 쿼리
+            var query =
+            "PREFIX dbpedia2: <http://dbpedia.org/property/>\n" +
+            "PREFIX dbpedia: <http://dbpedia.org/>\n" +
+            "select distinct ?label ?comment ?type ?s\n" +
+            "where {\n" +
+            "  ?s rdf:type ?type;\n" +
+            "     rdfs:label ?label;\n" +
+            "     rdfs:comment ?comment.\n" +
+            "  FILTER (langMatches(lang(?comment),\"en\")).\n" +
+            "  FILTER (langMatches(lang(?label),\"en\")).\n" +
+            "  FILTER regex(?type, \"ontology/Bird\").\n" +
+            "  FILTER regex(?s, \"" + bird2 + "\").\n" +
+            "} LIMIT 15";
+
+            // SPARQL 엔드포인트 URL
+            var endpointUrl = 'https://dbpedia.org/sparql';
+
+            // AJAX 요청
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', endpointUrl, true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('Accept', 'application/sparql-results+json');
+            xhr.setRequestHeader('Cache-Control', 'no-cache'); // 캐시 비활성화
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    processSparqlResults(response);
+                }
+            };
+
+            xhr.send('query=' + encodeURIComponent(query));
+
+            // SPARQL 결과 처리 함수
+            function processSparqlResults(data) {
+                var bindings = data.results.bindings;
+                for (var i = 0; i < bindings.length; i++) {
+                    var label = bindings[i].label.value;
+                    var comment = bindings[i].comment.value;
+                    //var type = bindings[i].type.value;
+                    var uri = bindings[i].s.value;
+
+                    var pageLink = 'https://dbpedia.org/resource/' + encodeURIComponent(uri.substring(uri.lastIndexOf('/') + 1));
+                    console.log("Name: " + label, "/ Description: " +comment, pageLink);
+                    document.getElementById("pediaName").innerHTML= "Name: " + label;
+                    document.getElementById("pediaContent").innerHTML= "Description: " + comment;
+                    document.getElementById("pediaLink").innerHTML= "DBpedia link: " + pageLink;
+                }
+            }
+        </script>
+
 
 
 
