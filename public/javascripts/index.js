@@ -29,23 +29,13 @@ function init() {
 }
 
 /**
- * called to generate a random room number
- * This is a simplification. A real world implementation would ask the server to generate a unique room number
- * so to make sure that the room number is not accidentally repeated across uses
- */
-function generateRoom() {
-    roomNo = Math.round(Math.random() * 10000);
-    document.getElementById('roomNo').value = 'R' + roomNo;
-}
-
-/**
  * called when the Send button is pressed. It gets the text to send from the interface
  * and sends the message via  socket
  */
-function sendChatText() {
+function sendChatText(birdId) {
     let chatText = document.getElementById('chat_input').value;
     let name = document.getElementById('userID').value;
-    socket.emit('chat', name, chatText);
+    socket.emit('chat', name,birdId, chatText);
 }
 
 

@@ -11,6 +11,7 @@
     <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
     <link rel='stylesheet' href='/stylesheets/details.css'/>
     <script src="../public/javascripts/index.js"></script>
+    
 </head>
 <body onload="init()">
 
@@ -92,7 +93,7 @@
                     <label class="title" for="name"> User/Chat:</label>
                     <input class="blank" type="text" id="userID" name="userID" style="width: 15%">
                     <input class="blank" type="text" id="chat_input" name="chat_input" style="width: 57%">
-                    <button id="chat-send-btn" onclick="sendChatText()">Send</button>
+                    <button id="chat-send-btn" onclick="sendChatText('<%= bird._id %>')">Send</button>
                 </p>
             </form>
         </div>

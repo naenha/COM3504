@@ -6,11 +6,12 @@ var ChatSchema = new Schema(
     {
         createdAt : {type: Date, default : Date.now},
         userName : {type: String},
-        chat : {type: String},
+        message : {type: String},
         birdId : {type: String}
     
     }
 );
+
 
 // Virtual for a character's age
 // CharacterSchema.virtual('age')
