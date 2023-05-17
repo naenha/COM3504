@@ -48,7 +48,27 @@ router.get('/details', function (req, res, next) {
       res.render('details', { bird: bird, title: "details"+bird.id});
   });
 })
+router.post('/details/:birdId/chat', function(req, res, next) {
+  var birdId = req.params.birdId;
+  var username = req.body.username;
+  var message = req.body.message;
 
+  var chatMessage = { username: username, message: message };
+
+  Bird.findByIdAndUpdate(
+      birdId,
+      { $push: { chatMessages: chatMessage } },
+      { new: true },
+      function(err, updatedBird) {
+        if (err) {
+          console.error('Failed to update bird data:', err);
+          return next(err);
+        }
+
+        res.send(updatedBird);
+      }
+  );
+});
 router.get('/', function(req, res, next) {
   
   bird.list(function(err, birds){

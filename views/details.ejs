@@ -86,14 +86,23 @@
     <div>
         <div class="title" style="display: inline">Welcome chat!</div>
     </div>
-    <div id="history" class="boxed" style="height: 300px; margin:5px;"></div>
+    <div id="chat-messages">
+        <% for (var i = 0; i < bird.chatMessages.length; i++) { %>
+        <div>
+            <strong><%= bird.chatMessages[i].username %>:</strong>
+            <%= bird.chatMessages[i].message %>
+        </div>
+        <% } %>
+
+    </div>
+        <div id="history" class="boxed" style="height: 300px; margin:5px;"></div>
     <div id="input" class="bottom boxed">
         <form onsubmit="return false;" style="width: 100%; height: 100%">
             <p>
                 <label class="title" for="name"> User/Chat:</label>
                 <input class="blank" type="text" id="userID" name="userID" style="width: 15%">
                 <input class="blank" type="text" id="chat_input" name="chat_input" style="width: 57%">
-                <button id="chat-send-btn" onclick="sendChatText()">Send</button>
+                <button id="chat-send-btn" onclick="sendChatText('<%= bird._id %>')">Send</button>
             </p>
         </form>
     </div></div>
