@@ -140,9 +140,16 @@
 
                     var pageLink = 'https://dbpedia.org/resource/' + encodeURIComponent(uri.substring(uri.lastIndexOf('/') + 1));
                     console.log("Name: " + label, "/ Description: " +comment, pageLink);
-                    document.getElementById("pediaName").innerHTML= "Name: " + label;
-                    document.getElementById("pediaContent").innerHTML= "Description: " + comment;
-                    document.getElementById("pediaLink").innerHTML= "DBpedia link: " + pageLink;
+                    if (label == false){
+                        document.getElementById("pediaName").innerHTML= "Unknown";
+                        console.log("Unknown");
+                    }
+                    else{
+                        document.getElementById("pediaName").innerHTML= "Name: " + label;
+                        document.getElementById("pediaContent").innerHTML= "Description: " + comment;
+                        document.getElementById("pediaLink").innerHTML= "DBpedia link: " + pageLink;
+                        console.log("sth is searched");
+                    }
                 }
             }
         </script>
