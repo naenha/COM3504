@@ -3,21 +3,45 @@ var req = require('request');
 var Bird = require('../models/birds');
 var path = require('path');
 
+function isEmpty(str){
+		
+    if(typeof str == "undefined" || str == null || str == "")
+        return true;
+    else
+        return false ;
+}
+
 
 exports.create = function (req, res) {
 
     var userData = req.body;
+    var url = userData.imgUrl;
 
-    var bird = new Bird({
-        userName: userData.userName,
-        birdName: userData.birdName,
-        observedAt: userData.observedAt,
-        description: userData.description,
-        img: req.file.path,
-        imgUrl: userData.imgUrl,
-        latDisplay: userData.latDisplay,
-        lngDisplay: userData.lngDisplay,
-    });
+    if ( isEmpty(url)) {
+        var bird = new Bird({
+            userName: userData.userName,
+            birdName: userData.birdName,
+            observedAt: userData.observedAt,
+            description: userData.description,
+            //imgUrl: userData.imgUrl,
+            img: req.file.path,
+            latDisplay: userData.latDisplay,
+            lngDisplay: userData.lngDisplay,
+        });
+
+    } else {
+        var bird = new Bird({
+            userName: userData.userName,
+            birdName: userData.birdName,
+            observedAt: userData.observedAt,
+            description: userData.description,
+            imgUrl: userData.imgUrl,
+            //img: req.file.path,
+            latDisplay: userData.latDisplay,
+            lngDisplay: userData.lngDisplay,
+        });
+
+    }
 
     bird.save(function (err, results) {
         if (err) {

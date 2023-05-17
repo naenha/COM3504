@@ -4,6 +4,7 @@ var bodyParser= require("body-parser");
 var bird = require('../controllers/birds');
 var multer = require('multer');
 var Bird = require('../models/birds');
+var Chat = require('../models/chats');
 
 // storage defines the storage options to be used for file upload with multer
 var storage = multer.diskStorage({
@@ -29,19 +30,27 @@ router.get('/add', function(req, res, next) {
 });
 
 router.post('/add', upload.single('myImg'), function(req, res) {
-  console.log(req);
+  // console.log(req);
   bird.create(req,res);
 });
 
 router.get('/details', function (req, res, next) {
   var id =req.query.id;
+  var history = Chat.find().where('birdID').equals(id).select('username message').sort('createdAt');
 
   Bird.findById(id, function(err, bird) {
     if (err)
       res.render('error', { error: err });
     else
-      res.render('details', { bird: bird, title: "details"+bird.id});
+      if (bird.imgUrl){
+        res.render('details2', {bird: bird, history:history});
+      }
+      else {
+        res.render('details', { bird: bird, history: history });
+      }
+      
   });
+
 })
 
 

@@ -12,7 +12,6 @@ var ChatSchema = new Schema(
     }
 );
 
-
 // Virtual for a character's age
 // CharacterSchema.virtual('age')
 //     .get(function () {

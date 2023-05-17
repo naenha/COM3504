@@ -12,27 +12,13 @@ var BirdSchema = new Schema(
         imgUrl: {type: String},
         latDisplay: {type: Number},
         lngDisplay: {type: Number},
-        // createdAt : {type: Date, default : Date.now},
-        // observedAt : {type: Date},
-        // location : {
-        //     lat: {type: Number},
-        //     lng: {type: Number}
-        // },
-        // description: {type: String },
+
         // identification : {
         //     commonName: {type: String},
         //     scientificName: {type: String},
         //     description : {type: String},
         //     URI : {type: String}
         // },
-        // img: {type: String },
-        // userName : {type: String},
-        // chat: {
-        //     userName : {type: String},
-        //     chat : {type: String},
-        //     createdAt : {type: Date,},
-           
-        // }
 
     }
 );
