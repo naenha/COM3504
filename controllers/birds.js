@@ -14,6 +14,7 @@ exports.create = function (req, res) {
         observedAt: userData.observedAt,
         description: userData.description,
         img: req.file.path,
+        imgUrl: userData.imgUrl,
         latDisplay: userData.latDisplay,
         lngDisplay: userData.lngDisplay,
     });
