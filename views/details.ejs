@@ -96,7 +96,7 @@
         <script>
             var bird2 = document.getElementById("birdSearch").value;
             console.log(bird2);
-            // SPARQL 쿼리
+            // SPARQL query
             var query =
             "PREFIX dbpedia2: <http://dbpedia.org/property/>\n" +
             "PREFIX dbpedia: <http://dbpedia.org/>\n" +
@@ -111,7 +111,7 @@
             "  FILTER regex(?s, \"" + bird2 + "\").\n" +
             "} LIMIT 15";
 
-            // SPARQL 엔드포인트 URL
+            // SPARQL endpoint URL
             var endpointUrl = 'https://dbpedia.org/sparql';
 
             // AJAX 요청
@@ -135,7 +135,7 @@
 
             xhr.send('query=' + encodeURIComponent(query));
 
-            // SPARQL 결과 처리 함수
+            // SPARQL result function
             function processSparqlResults(data) {
                 var bindings = data.results.bindings;
 
