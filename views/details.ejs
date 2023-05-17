@@ -86,13 +86,7 @@
     <div>
         <div class="title" style="display: inline">Welcome chat!</div>
     </div>
-    <div id="chat-messages">
-        <% for (var i = 0; i < bird.chatMessages.length; i++) { %>
-        <div>
-            <strong><%= bird.chatMessages[i].username %>:</strong>
-            <%= bird.chatMessages[i].message %>
-        </div>
-        <% } %>
+  
 
     </div>
         <div id="history" class="boxed" style="height: 300px; margin:5px;"></div>
@@ -105,10 +99,9 @@
                 <button id="chat-send-btn" onclick="sendChatText('<%= bird._id %>')">Send</button>
             </p>
         </form>
-    </div></div>
+    </div>
 </div>
 
 
-</div>
 </body>
 </html>

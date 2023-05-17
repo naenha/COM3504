@@ -10,7 +10,8 @@ exports.init = function (io, db) {
         socket.on('chat', function (userName,birdID, chatText) {
             const chatData = {
                 username: userName,
-                message: chatText
+                message: chatText,
+                birdID: birdID
             };
             socket.join(birdID);
             mongoose.connection.collection('chat').insertOne(chatData, function(err, result) {
