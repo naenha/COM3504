@@ -33,13 +33,12 @@ router.get('/add', function(req, res, next) {
 });
 
 router.post('/add', upload.single('myImg'), function(req, res) {
-  console.log(req);
+  //console.log(req);
   bird.create(req,res);
 });
 
 router.get('/details', function (req, res, next) {
   var id =req.query.id;
-  console.log(bird.img)
   Bird.findById(id, function(err, bird) {
     if (err)
       res.render('error', { error: err });
@@ -47,6 +46,13 @@ router.get('/details', function (req, res, next) {
       res.render('details', { bird: bird, title: "details"+bird.id});
   });
 })
+
+router.post('/details/:id', function(req, res){
+  var id = req.params.id;
+  console.log(id);
+  console.log(req.body);
+    bird.update(req,res,id);
+});
 
 router.get('/', function(req, res, next) {
   bird.list(function(err, birds){
@@ -57,8 +63,6 @@ router.get('/', function(req, res, next) {
   });
 
 });
-
-
 
 
 module.exports = router;

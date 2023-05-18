@@ -33,18 +33,24 @@
       bird sighting at....timestamp
   </h1><br>
 
- <h1>
-     Bird name:
-     <%= bird.birdName %>
- </h1>
+  <form method="POST" action="/details/<%= bird._id %>">
+    <h1> Bird name: </h1>
+        <div>
+            <input type="text" name="birdName" id="birdName" value="<%= bird.birdName %>">
+        </div>
+        
+        <button type="submit" name="updateName" >Update</button>
+
+  </form>
+
+ 
 
   <div class="row">
       <div class="col">
           <img class="rounded float-start" alt="ex pic" width="400" height="600" src="<%= bird.img %>">
-<!--          <img src="img/Shapiro.jpeg" alt="ex pic" width="400" height="450">-->
       </div>
 
-      <div class="col-5"
+      <div class="col-5">
            <br>Address:
             <br><%= bird.address %><br>
 

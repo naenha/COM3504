@@ -38,9 +38,18 @@ exports.list = function(callback) {
     });
 };
 
-
-
-
-
-
+exports.update = function(req, res,id) {
+    var newname = req.body.birdName;
+    Bird.findByIdAndUpdate(id, { birdName: newname },
+        function (err, newname) {
+            if (err){
+                  console.log(err)
+                }
+            else{
+                console.log("Updated User : ", newname);
+                res.setHeader('Content-Type', 'application/json');
+                res.redirect('/');
+            }
+        });
+}
 
