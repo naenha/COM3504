@@ -37,6 +37,7 @@ exports.list = function(callback) {
     });
 };
 
+
 exports.update = function(req, res,id) {
     var newname = req.body.birdName;
     Bird.findByIdAndUpdate(id, { birdName: newname },
