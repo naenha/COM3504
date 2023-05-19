@@ -22,6 +22,44 @@ var storage = multer.diskStorage({
 });
 var upload = multer({ storage: storage });
 
+function getChat(req, res, next){
+  var id =req.query.id;
+  console.log("chat id : " + id);
+  Chat.find({birdId: id}, function(err, chat){
+    if (err)
+    {
+        res.send(err);
+    }
+    res.locals.savedChats = chat;
+    console.log("getChat");
+    
+    next()
+  })
+};
+
+function getBird(req, res, next){
+  var id =req.query.id;
+  console.log("bird id : " + id);
+  Bird.findById(id, function(err, bird) {
+    if (err)
+      res.render('error', { error: err });
+    else
+      res.locals.bird = bird;
+      console.log(bird.description);
+      console.log("getBird");
+      next();
+  });
+
+};
+
+function renderForm(req, res){
+  if(bird.imgUrl){
+    res.render('details2');
+  }
+  else
+    res.render('details');
+  }
+
 
 /* GET home page. */
 
@@ -34,32 +72,16 @@ router.post('/add', upload.single('myImg'), function(req, res) {
   bird.create(req,res);
 });
 
-router.get('/details', function (req, res) {
-  var id =req.query.id;
-  console.log("id: "+id);
-  Chat.find({birdId: id}, function(err, chat){
-    if (err)
-    {
-        res.send(err);
-    }
-    console.log(chat);
-    res.send(chat);
-  })
-
-  // Bird.findById(id, function(err, bird) {
-  //   if (err)
-  //     res.render('error', { error: err });
-  //   else
-  //     if (bird.imgUrl){
-  //       res.render('details2', {bird: bird});
-  //     }
-  //     else {
-  //       res.render('details', { bird: bird});
-  //     }
-      
-  // });
-
-})
+router.get('/details', getBird, getChat, renderForm 
+  //{
+  // var id =req.query.id;
+  // console.log("id: "+id);
+  
+  // getBird(req, res);
+  // getChat(req, res);
+  // renderForm(req, res);
+    //}
+)
 
 
 router.post('/details/:birdId/chat', function(req, res, next) {
