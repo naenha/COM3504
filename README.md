@@ -12,7 +12,7 @@
 - the sightings sorted by time
 - users can chat on details page
 - Chat support online and offline interaction
-
+-
 
 ## Team memebers
 - Haoming Liu : hliu90@sheffield.ac.uk

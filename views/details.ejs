@@ -18,7 +18,8 @@
     <% include ../public/partials/headers.ejs %>
 
     <h1>
-      <%=bird.userName %> 's Sighting at <%=bird.observedAt %>
+      <%=bird.userName %> 's Sighting at <%= bird.observedAt.toLocaleString('en-GB', { timeZone: 'UTC', hour12: false }) %>
+
     </h1><br>
 
     <form method="POST" action="/details/<%= bird._id %>">

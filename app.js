@@ -8,6 +8,10 @@ var bodyParser = require('body-parser');
 
 
 var index = require('./routes/index');
+<<<<<<< HEAD
+
+=======
+>>>>>>> 310c579dc67df6ddb025c61114777d693707adf7
 
 var app = express();
 
@@ -24,6 +28,10 @@ app.use('/public/', express.static('./public/'));
 
 
 app.use('/', index);
+<<<<<<< HEAD
+
+=======
+>>>>>>> 310c579dc67df6ddb025c61114777d693707adf7
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
