@@ -26,7 +26,7 @@ var upload = multer({ storage: storage });
 function getChat(req, res, next){
   var id =req.query.id;
   console.log("chat id : " + id);
-  Chat.find({birdId: id}, function(err, chat){
+  Chat.find({birdID: id}, function(err, chat){
     if (err)
     {
         res.send(err);
@@ -46,7 +46,6 @@ function getBird(req, res, next){
       res.render('error', { error: err });
     else
       res.locals.bird = bird;
-      console.log(bird.description);
       console.log("getBird");
       next();
   });
