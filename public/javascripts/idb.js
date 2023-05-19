@@ -1,10 +1,11 @@
+// Open / create a new IndexedDB database
 var request = indexedDB.open('BirdObservationsDB', 1);
 var db;
 
+// Handle database open status
 request.onsuccess = function(event) {
     db = event.target.result;
 };
-
 request.onerror = function(event) {
     console.log('Error opening database:', event.target.error);
 };
