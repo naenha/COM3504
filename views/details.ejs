@@ -170,14 +170,19 @@
       </div>
   </div>
 
-  <div id="chat-box" style="display: block; background-color: #d8dada; width: 50%" >
-        <div>
-            <div class="title" style="display: inline">Welcome chat!</div>
+
+    <div id="chat-box" style="display: block; background-color: #d8dada; width: 50%" >
+        <div id="history" class="boxed" style="height: 300px; margin:5px;">
+            <div class="title" style="display: inline" >Welcome chat!
+                <br>
+                <% for(var i=0; i<savedChats.length; i++) { %>
+                    <p> <%= savedChats[i].username %> :  <%= savedChats[i].message %></p>
+                <% } %>
+            
+            </div>
         </div>
 
-        <div id="history" class="boxed" style="height: 300px; margin:5px;"></div>
-
-        <div id="input" class="bottom boxed">
+        <div id="input">
             <form onsubmit="return false;" style="width: 100%; height: 100%">
                 <p>
                     <label class="title" for="name"> User/Chat:</label>
