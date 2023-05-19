@@ -39,15 +39,19 @@
       </div>
 
       <div class="col-5">
-        <br>Address:
+        <p style="color:#007bff;">[Address]</p>
 
           <div id="map" style="width: 100%; height: 200px;"></div>
 
+          <!-- To get the Lattitude and Longitude from the database -->
+          <!-- And give them id, to make they can be used in JS below -->
           <input id="latA" value= <%= bird.latDisplay %> style="display:none">
           <input id="lngA" value= <%= bird.lngDisplay %> style="display:none">
 
           <script>
               function initMap() {
+
+                  <!-- declare the values-->
                 var latA = Number(document.getElementById("latA").value);
                 var lngA = Number(document.getElementById("lngA").value);
                 var myLatLng = {lat: latA, lng: lngA};
@@ -67,13 +71,18 @@
 
           <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJ9gcEoETHLesDRF_qNPNTyLM9wbkxLBU&callback=initMap"></script>
 
-          Description: <br>
+          <p style="color:#007bff;">[Description]</p>
           <%= bird.description %><br>
 
           <p></p>
+
+          <!-- To get the Birdname from the database -->
+          <!-- And give them id, to make they can be used in JS below -->
           <input id="birdSearch" value= "'<%= bird.birdName %>'" style="display:none">
           <input id="birdSearch2" value= <%= bird.birdName %> style="display:none">
-          <p style="color:#007bff;">DBpedia:</p>
+
+          <!-- DBpedia result -->
+          <p style="color:#007bff;">[DBpedia]</p>
           <p id="pediaName"></p>
           <p id="pediaContent"></p>
           <p id="pediaLink"></p>
@@ -82,7 +91,7 @@
           <script>
               var bird2 = document.getElementById("birdSearch").value;
               var bird1 = document.getElementById("birdSearch2").value;
-              //var bird2 = a;
+
               console.log(bird2);
               // SPARQL query
               var query =
@@ -101,7 +110,7 @@
               // SPARQL endpoint URL
               var endpointUrl = 'https://dbpedia.org/sparql';
 
-              // AJAX 요청
+              // AJAX request
               var xhr = new XMLHttpRequest();
               xhr.open('POST', endpointUrl, true);
               xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -127,15 +136,13 @@
                   var bindings = data.results.bindings;
 
                   if (bindings.length === 0) {
-                      document.getElementById("pediaName").innerHTML = "Unknown";
+                      document.getElementById("pediaName").innerHTML = "Unknown - did not match any birds. Please enter the exact name with the correct spelling and spacing.";
                       console.log("Unknown");
                   }else {
                       for (var i = 0; i < bindings.length; i++) {
                           var label = bindings[i].label.value;
                           var comment = bindings[i].comment.value;
-                          //var type = bindings[i].type.value;
                           var uri = bindings[i].s.value;
-
                           var pageLink = 'https://dbpedia.org/resource/' + encodeURIComponent(uri.substring(uri.lastIndexOf('/') + 1));
                           console.log("Name: " + label, "/ Description: " + comment, pageLink);
                           document.getElementById("pediaName").innerHTML = "Name: " + label;
@@ -144,12 +151,8 @@
                           document.getElementById("pediaMessage").innerHTML = "※If you cannot find the desired result, please enter the exact name with the correct spelling and spacing."
                       }
                   }
-
               }
           </script>
-
-
-
       </div>
     </div>
 

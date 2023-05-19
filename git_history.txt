@@ -1,0 +1,58 @@
+# This is extracted directly from main branch. However there are works done before
+# initial commit or outside the branch/commit records, and being pasted to the file
+# directly, this log may not show the actual progress and contribution.
+# All team members contribute equally. 
+
+*   5457690 (HEAD -> main, origin/main, origin/HEAD) Merge branch 'main' of github.com:naenha/COM3504
+|\
+| * 292aa73 change
+* | 6141131 partial header file
+|/
+* fd0419d set partial headers
+* 9e92300 chat history
+* 3c86029 display past chats
+* 3f2f609 dbpedia updated
+* a3166f1 sw network first. dynamic details page title
+* ddc7553 chat offline
+*   3bd9e02 chat offline & change bird name
+|\
+| * fb46007 offline chat kind of works
+| * 2668dbc make img size flexi
+* | b86d73a chat offline & change bird name
+|/
+* ee17199 saving chat messages
+* c90e406 chat
+* 653ca67 chat
+* b60a8c9 chat
+* 4e5bb2a added geolocaion
+* bf8c04d display image
+* 71f527a display image
+* 439f851 enable time selection
+* 6f3d8f6 add birdname
+* 974678f delete ejs
+* 696d916 fix href again
+* 532dfbd fix redirecting
+* e219c04 delete node modules
+*   7071a9b merge pwa
+|\
+| * 26831d8 pwa
+| * 3554ff0 pwa
+* | 06f2177 merge
+* |   946caaa merge
+|\ \
+| * | 2fecec8 Deleted node modules
+| * | 74e90c0 add mongoose connection option
+| * | 36c40ba err.ejs
+| * | a642b2e test
+| |/
+| * c1b807c db working for images
+| * 553e7d6 db working
+* 4c4fb59 add the api key
+* 9f27bbf chat
+* bb823e5 security issues update
+* c4dc332 outlined sighting details page
+* 0395ca0 fix nav
+* 0ec5bae 1
+* d05ad48 upload
+* 5cc748d try
+* 40eec0d project settings
