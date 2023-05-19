@@ -122,22 +122,6 @@ function sendOfflineMessage(){
         };
     }
 }
-function writeOfflineMessagesOnHistory() {
-    let transaction = db.transaction('messages', 'readonly');
-    let objectStore = transaction.objectStore('messages');
-    let request = objectStore.getAll();
-
-    request.onsuccess = function(event) {
-        let messages = event.target.result;
-        messages.forEach(function(message) {
-            writeOnHistory('<b>' + message.userID + ':</b> ' + message.message);
-        });
-    };
-
-    request.onerror = function(event) {
-        console.log('Failed to read offline messages:', event.target.error);
-    };
-}
 
 
 
