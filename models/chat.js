@@ -12,15 +12,6 @@ var ChatSchema = new Schema(
     }
 );
 
-
-// Virtual for a character's age
-// CharacterSchema.virtual('age')
-//     .get(function () {
-//         var currentDate = new Date().getFullYear();
-//         var result= currentDate - this.dob;
-//         return result;
-//     });
-
 ChatSchema.set('toObject', {getters: true, virtuals: true});
 
 var Chat = mongoose.model('Chat', ChatSchema);
