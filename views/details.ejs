@@ -18,7 +18,8 @@
     <% include ../public/partials/headers.ejs %>
 
     <h1>
-      <%=bird.userName %> 's Sighting at <%=bird.observedAt %>
+      <%=bird.userName %> 's Sighting at <%= bird.observedAt.toLocaleString('en-GB', { timeZone: 'UTC', hour12: false }) %>
+
     </h1><br>
 
     <form method="POST" action="/details/<%= bird._id %>">
@@ -114,7 +115,7 @@
               xhr.open('POST', endpointUrl, true);
               xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
               xhr.setRequestHeader('Accept', 'application/sparql-results+json');
-              xhr.setRequestHeader('Cache-Control', 'no-cache'); // 캐시 비활성화
+              xhr.setRequestHeader('Cache-Control', 'no-cache');
 
               xhr.onreadystatechange = function () {
                   if (xhr.readyState === 4) {

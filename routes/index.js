@@ -69,12 +69,12 @@ function renderData(req, res){
 
 
 
-/* GET home page. */
 
 router.get('/add', function(req, res, next) {
   res.render('add', { title: 'Add a new Character to the DB' });
 });
 
+// upload sighting
 router.post('/add', upload.single('myImg'), function(req, res) {
   console.log(req);
   bird.create(req,res);
