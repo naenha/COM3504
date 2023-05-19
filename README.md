@@ -5,14 +5,17 @@
 - Run npm install
 - Install MongoDB instance
 - Run 'bin\www'
-- connect to localhost:3000
+- Connect to localhost:3000
 
 ## Implemented
-- users can upload new sightings
-- the sightings sorted by time
-- users can chat on details page
+- Users can upload new sightings
+- The sightings sorted by time
+- Users can chat on details page
 - Chat support online and offline interaction
--
+- Users can get the description from DBpedia based on the bird name that the user wrote
+- If the user update the bird name, description from DBPedia changes accordingly
+- PWA implemented
+- Users can set location with postcode
 
 ## Team memebers
 - Haoming Liu : hliu90@sheffield.ac.uk
