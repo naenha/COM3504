@@ -15,31 +15,13 @@
 </head>
 <body onload="init()">
 
-  <header>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-          <div class="container-fluid">
-              <a class="navbar-brand" href="/">Bird Sighting Club</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav">
-                      <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="/">Home</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="/add">Upload</a>
-                      </li>
-                  </ul>
-              </div>
-          </div>
-      </nav>
-  </header>
-  <h1>
-      <%=bird.userName %> 's Sighting at <%=bird.observedAt %>
-  </h1><br>
+    <% include ../public/partials/headers.ejs %>
 
-  <form method="POST" action="/details/<%= bird._id %>">
+    <h1>
+      <%=bird.userName %> 's Sighting at <%=bird.observedAt %>
+    </h1><br>
+
+    <form method="POST" action="/details/<%= bird._id %>">
       <h1> Bird name: </h1>
       <div>
           <input type="text" name="birdName" id="birdName" value="<%= bird.birdName %>">
@@ -47,10 +29,10 @@
 
       <button type="submit" name="updateName" >Update</button>
 
-  </form>
+    </form>
 
 
-  <div class="row">
+    <div class="row">
       <div class="col">
         <img class="rounded float-start" alt="ex pic" src="<%= bird.img %>" style="max-width: 100%; height: auto;">
       </div>
@@ -59,7 +41,7 @@
         <br>Address:
 
           <div id="map" style="width: 100%; height: 200px;"></div>
-          
+
           <input id="latA" value= <%= bird.latDisplay %> style="display:none">
           <input id="lngA" value= <%= bird.lngDisplay %> style="display:none">
 
@@ -168,7 +150,7 @@
 
 
       </div>
-  </div>
+    </div>
 
 
     <div id="chat-box" style="display: block; background-color: #d8dada; width: 50%" >

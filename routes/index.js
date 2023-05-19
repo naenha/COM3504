@@ -23,10 +23,11 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 
+//retrieving sotred chatting for each sighting
 function getChat(req, res, next){
   var id =req.query.id;
   console.log("chat id : " + id);
-  Chat.find({birdId: id}, function(err, chat){
+  Chat.find({birdID: id}, function(err, chat){
     if (err)
     {
         res.send(err);
@@ -38,6 +39,8 @@ function getChat(req, res, next){
   })
 };
 
+
+// getiing bird sighting information
 function getBird(req, res, next){
   var id =req.query.id;
   console.log("bird id : " + id);
@@ -46,7 +49,6 @@ function getBird(req, res, next){
       res.render('error', { error: err });
     else
       res.locals.bird = bird;
-      console.log(bird.description);
       console.log("getBird");
       next();
   });
@@ -54,9 +56,13 @@ function getBird(req, res, next){
 };
 
 function renderData(req, res){
+
+  // if user uploaded photo with url
   if(bird.imgUrl){
     res.render('details2');
   }
+
+  // if user uploaded img file
   else
     res.render('details');
   }
@@ -74,37 +80,17 @@ router.post('/add', upload.single('myImg'), function(req, res) {
   bird.create(req,res);
 });
 
+
 router.get('/details', getBird, getChat, renderData );
 
+
+// updating bird name 
 router.post('/details/:id', function(req, res){
   var id = req.params.id;
   console.log(id);
   console.log(req.body);
     bird.update(req,res,id);
 });
-
-
-// router.post('/details/:birdId/chat', function(req, res, next) {
-//   var birdId = req.params.birdId;
-//   var username = req.body.username;
-//   var message = req.body.message;
-
-//   var chatMessage = { username: username, message: message };
-
-//   Bird.findByIdAndUpdate(
-//       birdId,
-//       { $push: { chatMessages: chatMessage } },
-//       { new: true },
-//       function(err, updatedBird) {
-//         if (err) {
-//           console.error('Failed to update bird data:', err);
-//           return next(err);
-//         }
-
-//         res.send(updatedBird);
-//       }
-//   );
-// });
 
 
 router.get('/', function(req, res, next) {

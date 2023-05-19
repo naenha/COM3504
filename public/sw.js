@@ -7,7 +7,9 @@ const filesToCache = [
     '/stylesheets/details.css',
     '/stylesheets/upload.css',
     '/images/icon.png',
-    '/add'
+    '/add',
+    '../public/partials/headers.ejs'
+
 ];
 
 // install: cache specified files and urls
