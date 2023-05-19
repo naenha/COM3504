@@ -7,11 +7,11 @@ var Chat = require('../models/chats');
 exports.init = function (io, db) {
     io.sockets.on('connection', function (socket) {
 
-        socket.on('chat', function (userName,birdId, chatText) {
+        socket.on('chat', function (username,birdId, chatText) {
             var now = new Date()
             const chatData = {
                 createdAt: now,
-                username: userName,
+                username: username,
                 message: chatText,
                 birdId: birdId
             };
@@ -25,7 +25,7 @@ exports.init = function (io, db) {
 
                 console.log('Chat data inserted:', result.ops);
             });
-            io.to(birdId).emit('chat', userName, chatText);
+            io.to(birdId).emit('chat', username, chatText);
 
         });
 

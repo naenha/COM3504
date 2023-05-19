@@ -91,10 +91,16 @@
     }
   </script>
 
-
+<p></p>
   <div id="chat-box" style="display: block; background-color: #d8dada; width: 50%" >
         <div>
-            <div class="title" style="display: inline">Welcome chat!</div>
+            <div class="title" style="display: inline">Welcome chat!
+                <%= savedChats %>
+                <% for(var i=0; i<savedChats.length; i++) { %>
+                    <p> <%= savedChats.username %> :  <%= savedChats.message %></p>
+                  <% } %>
+            
+            </div>
         </div>
         <div id="history" class="boxed" style="height: 300px; margin:5px;"></div>
 

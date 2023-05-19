@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var ChatSchema = new Schema(
     {
         createdAt : {type: Date, default : Date.now},
-        userName : {type: String},
+        username : {type: String},
         message : {type: String},
         birdId : {type: String}
     

@@ -52,7 +52,7 @@ function getBird(req, res, next){
 
 };
 
-function renderForm(req, res){
+function renderData(req, res){
   if(bird.imgUrl){
     res.render('details2');
   }
@@ -72,16 +72,7 @@ router.post('/add', upload.single('myImg'), function(req, res) {
   bird.create(req,res);
 });
 
-router.get('/details', getBird, getChat, renderForm 
-  //{
-  // var id =req.query.id;
-  // console.log("id: "+id);
-  
-  // getBird(req, res);
-  // getChat(req, res);
-  // renderForm(req, res);
-    //}
-)
+router.get('/details', getBird, getChat, renderData );
 
 
 router.post('/details/:birdId/chat', function(req, res, next) {
