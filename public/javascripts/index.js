@@ -1,7 +1,5 @@
-let name = null;
-let roomNo = null;
 let socket = io();
-
+let db;
 
 /**
  * called by <body onload>
@@ -9,7 +7,21 @@ let socket = io();
  * plus the associated actions
  */
 function init() {
+    if ('indexedDB' in window) {
+        initIndexedDB();
 
+    } else {
+        console.log("This browser doesn't support IndexedDB");
+    }
+    window.addEventListener('online', function() {
+        console.log('Online');
+        // Send stored messages to MongoDB when it is online
+        sendOfflineMessage();
+    });
+
+    window.addEventListener('offline', function() {
+        console.log('Offline');
+    });
     // // called when someone joins the room. If it is someone else it notifies the joining of the room
     // socket.on('joined', function (room, userId) {
     //     if (userId === name) {
@@ -22,10 +34,26 @@ function init() {
     // });
     // called when a message is received
     socket.on('chat', function (userId, chatText) {
-        let who = userId
-        writeOnHistory('<b>' + who + ':</b> ' + chatText);
+        writeOnHistory('<b>' + userId + ':</b> ' + chatText);
     });
 
+}
+function initIndexedDB(){
+    let request = indexedDB.open('chat',1);
+    request.onerror = function (ev){
+        console.log('fail to open indexedDB:',ev.request.error);
+    }
+    request.onsuccess = function (ev){
+        console.log('open indexedDB');
+        sendOfflineMessage();
+    }
+    request.onupgradeneeded = function(event) {
+        db = event.target.result;
+        let objectStore = db.createObjectStore('messages', { keyPath: 'id', autoIncrement: true });
+        objectStore.createIndex('userId', 'userId');
+        objectStore.createIndex('birdId', 'birdId');
+        objectStore.createIndex('message', 'message');
+    };
 }
 
 /**
@@ -35,7 +63,15 @@ function init() {
 function sendChatText(birdId) {
     let chatText = document.getElementById('chat_input').value;
     let name = document.getElementById('userID').value;
-    socket.emit('chat', name,birdId, chatText);
+
+    if (navigator.onLine) {
+        socket.emit('chat', name, birdId, chatText);
+    } else {
+        // it will save to IndexedDB when offline
+        saveOfflineMessage(name, birdId, chatText);
+    }
+
+    document.getElementById('chat_input').value = '';
 }
 
 
@@ -49,4 +85,39 @@ function writeOnHistory(text) {
     paragraph.innerHTML = text;
     history.appendChild(paragraph);
     document.getElementById('chat_input').value = '';
+}
+
+//save messages to indexedDB
+function saveOfflineMessage(userID,birdId,message){
+
+    let transaction = db.transaction('messages', 'readwrite');
+    let objectStore = transaction.objectStore('messages');
+    let request = objectStore.add({userID: userID, birdId: birdId, message: message});
+    request.onsuccess = function (ev){
+        console.log('offline: save success');
+    }
+    request.onerror = function (ev){
+        console.log('offline: failed to save', ev.request.error);
+    }
+}
+//send the offline message to mongodb
+function sendOfflineMessage(){
+    if(navigator.onLine){
+        let transaction = db.transaction('messages', 'readwrite');
+        let objectStore = transaction.objectStore('messages');
+        let request = objectStore.openCursor();
+        request.onsuccess = function(event) {
+            let cursor = event.target.result;
+            if (cursor) {
+                let message = cursor.value;
+                socket.emit('chat', message.userID, message.birdId, message.message);
+                cursor.delete();
+                cursor.continue();
+            }
+        };
+
+        request.onerror = function(event) {
+            console.log('Failed to send offline messages:', event.target.error);
+        };
+    }
 }
