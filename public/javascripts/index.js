@@ -1,3 +1,5 @@
+// IndexedDB used to allow saving offline messages
+
 let socket = io();
 let db;
 

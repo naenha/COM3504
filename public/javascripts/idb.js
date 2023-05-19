@@ -1,3 +1,5 @@
+// collection in IndexedDB is created
+
 // Open / create a new IndexedDB database
 var request = indexedDB.open('BirdObservationsDB', 1);
 var db;

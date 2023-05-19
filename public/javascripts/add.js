@@ -1,3 +1,5 @@
+// Ajax Query is used to collect data from the form
+
 function sendAjaxQuery(url, data) {
     $.ajax({
         url: url ,
