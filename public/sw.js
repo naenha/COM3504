@@ -1,47 +1,40 @@
-// if u change cahce_name then pwa will re-install the cache(?)
-const CACHE_NAME = `v1`;
+const cacheName = 'my-cache';
+const filesToCache = [
+    '/',
+    '/javascripts/add.js',
+    '/javascripts/index.js',
+    '/stylesheets/style.css',
+    '/stylesheets/details.css',
+    '/stylesheets/upload.css',
+    '/images/icon.png',
+    '/add'
+];
 
-// Use the install event to pre-cache all initial resources.
+// install: cache specified files and urls
 self.addEventListener('install', event => {
-
-    //Sw will be installed after waitUtil is done
-    event.waitUntil((async () => {
-        const cache = await caches.open(CACHE_NAME);
-        // files&images that u want to be cached (for offline page)
-        cache.addAll([
-            '/',
-            '/javascripts/add.js',
-            '/stylesheets/style.css',
-            '/stylesheets/upload.css',
-            '/images/icon.png'
-        ]);
-    })());
+    event.waitUntil(
+        caches.open(cacheName)
+            .then(cache => cache.addAll(filesToCache))
+    );
 });
 
-
-//called by every http request
+// fetch: network first then fetch from cache
 self.addEventListener('fetch', event => {
-    event.respondWith((async () => {
-        const cache = await caches.open(CACHE_NAME);
-
-        // Get the resource from the cache.
-        // serve it from the cache, if not try network and save it and then return it
-        const cachedResponse = await cache.match(event.request);
-
-        if (cachedResponse) {
-            return cachedResponse;
-        } else {
-            try {
-                // If the resource was not in the cache, try the network.
-                const fetchResponse = await fetch(event.request);
-
-                // Save the resource in the cache and return it.
-                cache.put(event.request, fetchResponse.clone());
-                return fetchResponse;
-            } catch (e) {
-                // The network failed.
-            }
-        }
-    })());
+    event.respondWith(
+        // Check network first
+        fetch(event.request)
+            .then(response => {
+                // If response is successful, clone it and update the cache
+                if (response && response.status === 200) {
+                    const responseClone = response.clone();
+                    caches.open(cacheName)
+                        .then(cache => cache.put(event.request, responseClone));
+                }
+                return response;
+            })
+            .catch(() => {
+                // If network request fails, fetch from cache
+                return caches.match(event.request);
+            })
+    );
 });
-
