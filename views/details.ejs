@@ -39,6 +39,16 @@
       <%=bird.userName %> 's Sighting at <%=bird.observedAt %>
   </h1><br>
 
+  <form method="POST" action="/details/<%= bird._id %>">
+      <h1> Bird name: </h1>
+      <div>
+          <input type="text" name="birdName" id="birdName" value="<%= bird.birdName %>">
+      </div>
+
+      <button type="submit" name="updateName" >Update</button>
+
+  </form>
+
 
   <div class="row">
       <div class="col">
@@ -72,10 +82,90 @@
               }
           </script>
 
-            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJ9gcEoETHLesDRF_qNPNTyLM9wbkxLBU&callback=initMap"></script>
+          <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJ9gcEoETHLesDRF_qNPNTyLM9wbkxLBU&callback=initMap"></script>
 
           Description: <br>
           <%= bird.description %><br>
+
+          <p></p>
+          <input id="birdSearch" value= "'<%= bird.birdName %>'" style="display:none">
+          <input id="birdSearch2" value= <%= bird.birdName %> style="display:none">
+          <p style="color:#007bff;">DBpedia:</p>
+          <p id="pediaName"></p>
+          <p id="pediaContent"></p>
+          <p id="pediaLink"></p>
+          <p id="pediaMessage" style="color:#007bff;"></p>
+
+          <script>
+              var bird2 = document.getElementById("birdSearch").value;
+              var bird1 = document.getElementById("birdSearch2").value;
+              //var bird2 = a;
+              console.log(bird2);
+              // SPARQL query
+              var query =
+                  "PREFIX dbpedia: <http://dbpedia.org/>\n" +
+                  "SELECT *\n" +
+                  "WHERE {\n" +
+                  "  ?s rdfs:label ?label;\n" +
+                  "     rdfs:comment ?comment;\n" +
+                  "     rdf:type ?type.\n" +
+                  "  FILTER regex(str(?type), \"Bird\", \"i\").\n" +
+                  "  ?label bif:contains \"" + bird2 + "\".\n" +
+                  "  FILTER regex(?label, \"^" + bird1 + "\", \"i\").\n" +
+                  "  FILTER (langMatches(lang(?comment), \"en\")).\n" +
+                  "} Limit 1";
+
+              // SPARQL endpoint URL
+              var endpointUrl = 'https://dbpedia.org/sparql';
+
+              // AJAX 요청
+              var xhr = new XMLHttpRequest();
+              xhr.open('POST', endpointUrl, true);
+              xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+              xhr.setRequestHeader('Accept', 'application/sparql-results+json');
+              xhr.setRequestHeader('Cache-Control', 'no-cache'); // 캐시 비활성화
+
+              xhr.onreadystatechange = function () {
+                  if (xhr.readyState === 4) {
+                      if (xhr.status === 200) {
+                          var response = JSON.parse(xhr.responseText);
+                          processSparqlResults(response);
+                      } else {
+                          document.getElementById("pediaName").innerHTML = "Unknown - did not match any birds. Please enter the exact name with the correct spelling and spacing."
+                          console.log("Unknown");
+                      }
+                  }
+              };
+
+              xhr.send('query=' + encodeURIComponent(query));
+
+              // SPARQL result function
+              function processSparqlResults(data) {
+                  var bindings = data.results.bindings;
+
+                  if (bindings.length === 0) {
+                      document.getElementById("pediaName").innerHTML = "Unknown";
+                      console.log("Unknown");
+                  }else {
+                      for (var i = 0; i < bindings.length; i++) {
+                          var label = bindings[i].label.value;
+                          var comment = bindings[i].comment.value;
+                          //var type = bindings[i].type.value;
+                          var uri = bindings[i].s.value;
+
+                          var pageLink = 'https://dbpedia.org/resource/' + encodeURIComponent(uri.substring(uri.lastIndexOf('/') + 1));
+                          console.log("Name: " + label, "/ Description: " + comment, pageLink);
+                          document.getElementById("pediaName").innerHTML = "Name: " + label;
+                          document.getElementById("pediaContent").innerHTML = "Description: " + comment;
+                          document.getElementById("pediaLink").innerHTML = "DBpedia link: " + pageLink;
+                          document.getElementById("pediaMessage").innerHTML = "※If you cannot find the desired result, please enter the exact name with the correct spelling and spacing."
+                      }
+                  }
+
+              }
+          </script>
+
+
 
       </div>
   </div>
