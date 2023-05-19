@@ -1,7 +1,7 @@
 # This is extracted directly from main branch. However there are works done before
 # initial commit or outside the branch/commit records, and being pasted to the file
 # directly, this log may not show the actual progress and contribution.
-# All team members contribute equally. 
+# All team members contribute equally.
 
 *   5457690 (HEAD -> main, origin/main, origin/HEAD) Merge branch 'main' of github.com:naenha/COM3504
 |\
