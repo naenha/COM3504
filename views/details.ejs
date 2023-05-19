@@ -115,7 +115,7 @@
               xhr.open('POST', endpointUrl, true);
               xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
               xhr.setRequestHeader('Accept', 'application/sparql-results+json');
-              xhr.setRequestHeader('Cache-Control', 'no-cache'); // 캐시 비활성화
+              xhr.setRequestHeader('Cache-Control', 'no-cache');
 
               xhr.onreadystatechange = function () {
                   if (xhr.readyState === 4) {
