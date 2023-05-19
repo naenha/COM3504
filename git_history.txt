@@ -3,13 +3,54 @@
 # directly, this log may not show the actual progress and contribution.
 # All team members contribute equally.
 
-*   5457690 (HEAD -> main, origin/main, origin/HEAD) Merge branch 'main' of github.com:naenha/COM3504
+*   f8db3d7 (HEAD -> main, origin/main, origin/HEAD) Merge branch 'main' of github.com:naenha/COM3504
 |\
-| * 292aa73 change
-* | 6141131 partial header file
+| *   4d255d3 Merge branch 'main' of https://github.com/naenha/COM3504 into main
+| |\
+| | *   2d4fa57 Merge branch 'main' of https://github.com/naenha/COM3504
+| | |\
+| | * \   6253b16 time
+| | |\ \
+| | * | | e420ac2 css
+| * | | | a39a1bd change comment
+| | |_|/
+| |/| |
+| * | | e467a7a delete some
+| | |/
+| |/|
+| * | 310c579 manifest.json
+| * | 31db930 menifest
+| * |   3849e35 Merge branch 'main' of https://github.com/naenha/COM3504
+| |\ \
+| * | | cb2204b changes
+| * | | 4041f2f changes
+* | | | f3feccd screenshot, datetime
+* | | | a077d47 rm some pic
+| |/ /
+|/| |
+* | | e512de8 Merge branch 'main' of github.com:naenha/COM3504
+|\| |
+| * | 50e5532 Merge branch 'main' of https://github.com/naenha/COM3504
+| |\|
+| | *   ad0f56f Merge branch 'main' of https://github.com/naenha/COM3504
+| | |\
+| | * | 69672d0 readme
+| * | | 16950bd changes
+| | |/
+| |/|
+| * | a0441fa change week5mongo
+| * | 23bb1aa adding comment
+| * | 0375769 added img url
+* | | d108ae4 set for submit
+|/ /
+* |   5457690 Merge branch 'main' of github.com:naenha/COM3504
+|\ \
+| * | 292aa73 change
+* | | 6141131 partial header file
+|/ /
+* | fd0419d set partial headers
+* | 9e92300 chat history
 |/
-* fd0419d set partial headers
-* 9e92300 chat history
 * 3c86029 display past chats
 * 3f2f609 dbpedia updated
 * a3166f1 sw network first. dynamic details page title
