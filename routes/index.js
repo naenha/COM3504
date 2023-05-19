@@ -34,22 +34,30 @@ router.post('/add', upload.single('myImg'), function(req, res) {
   bird.create(req,res);
 });
 
-router.get('/details', function (req, res, next) {
+router.get('/details', function (req, res) {
   var id =req.query.id;
-  var history = Chat.find().where('birdID').equals(id).select('username message').sort('createdAt');
-
-  Bird.findById(id, function(err, bird) {
+  console.log("id: "+id);
+  Chat.find({birdId: id}, function(err, chat){
     if (err)
-      res.render('error', { error: err });
-    else
-      if (bird.imgUrl){
-        res.render('details2', {bird: bird, history:history});
-      }
-      else {
-        res.render('details', { bird: bird, history: history });
-      }
+    {
+        res.send(err);
+    }
+    console.log(chat);
+    res.send(chat);
+  })
+
+  // Bird.findById(id, function(err, bird) {
+  //   if (err)
+  //     res.render('error', { error: err });
+  //   else
+  //     if (bird.imgUrl){
+  //       res.render('details2', {bird: bird});
+  //     }
+  //     else {
+  //       res.render('details', { bird: bird});
+  //     }
       
-  });
+  // });
 
 })
 
