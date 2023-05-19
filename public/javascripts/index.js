@@ -1,7 +1,5 @@
-
 let socket = io();
 let db;
-
 
 /**
  * called by <body onload>
@@ -47,23 +45,6 @@ function initIndexedDB(){
         objectStore.createIndex('message', 'message');
     };
 }
-function initIndexedDB(){
-    let request = indexedDB.open('chat',1);
-    request.onerror = function (ev){
-        console.log('fail to open indexedDB:',ev.request.error);
-    }
-    request.onsuccess = function (ev){
-        console.log('open indexedDB');
-        sendOfflineMessage();
-    }
-    request.onupgradeneeded = function(event) {
-        db = event.target.result;
-        let objectStore = db.createObjectStore('messages', { keyPath: 'id', autoIncrement: true });
-        objectStore.createIndex('userId', 'userId');
-        objectStore.createIndex('birdId', 'birdId');
-        objectStore.createIndex('message', 'message');
-    };
-}
 
 /**
  * called when the Send button is pressed. It gets the text to send from the interface
@@ -72,15 +53,6 @@ function initIndexedDB(){
 function sendChatText(birdId) {
     let chatText = document.getElementById('chat_input').value;
     let name = document.getElementById('userID').value;
-
-    if (navigator.onLine) {
-        socket.emit('chat', name, birdId, chatText);
-    } else {
-        // it will save to IndexedDB when offline
-        saveOfflineMessage(name, birdId, chatText);
-    }
-
-    document.getElementById('chat_input').value = '';
 
     if (navigator.onLine) {
         socket.emit('chat', name, birdId, chatText);
@@ -139,11 +111,6 @@ function sendOfflineMessage(){
         };
     }
 }
-
-
-
-
-
 
 
 
